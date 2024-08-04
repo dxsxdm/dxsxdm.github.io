@@ -1,0 +1,91 @@
+<!DOCTYPE html>  
+<html lang="zh">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>医院内科学数据图表与祝福语</title>  
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+    <style>  
+       body {  
+            font-family: Arial, sans-serif;  
+            margin: 20px;  
+        }  
+        #chartContainer {  
+            width: 80%;  
+            margin: auto;  
+        }  
+        canvas {  
+            display: block;  
+            margin: 20px auto;  
+        }  
+        #wishContainer {  
+            text-align: center;  
+            margin-top: 20px;  
+        }  
+        #wishMessage {  
+            display: none; /* 初始时不显示祝福语 */  
+            color: green; /* 祝福语颜色 */  
+            font-size: 20px; /* 祝福语字体大小 */  
+        }  
+    </style>  
+</head>  
+<body>  
+    <div id="chartContainer">  
+        <h1>医院内科学数据折线图</h1>  
+        <canvas id="myChart" width="400" height="400"></canvas>  
+    </div>  
+  
+  
+  
+    <!-- 祝福语部分，去掉了按钮 -->  
+    <div id="wishContainer">  
+        <div id="wishMessage"></div>  
+    </div>  
+  
+    <script>  
+        // 静态数据模拟从后端获取的数据  
+        const mockData = {  
+            labels: ['一月', '二月', '三月', '四月', '五月', '六月'],  
+            datasets: [  
+                {  
+                    label: '第一临床医院',  
+                    data: [12, 19, 3, 5, 2, 3],  
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',  
+                    borderColor: 'rgba(255, 99, 132, 1)',  
+                    borderWidth: 1  
+                },  
+                {  
+                    label: '第二临床医院',  
+                    data: [7, 11, 5, 8, 3, 7],  
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',  
+                    borderColor: 'rgba(54, 162, 235, 1)',  
+                    borderWidth: 1  
+                }  
+            ]  
+        };  
+  
+        // 使用Chart.js绘制折线图  
+        const ctx = document.getElementById('myChart').getContext('2d');  
+        const myChart = new Chart(ctx, {  
+            type: 'line',  
+            data: mockData,  
+            options: {  
+                scales: {  
+                    y: {  
+                        beginAtZero: true  
+                    }  
+                }  
+            }  
+        });  
+  
+       
+        document.addEventListener('DOMContentLoaded', function() {  
+            const wishMessage = document.getElementById('wishMessage'); 
+wishMessage.style.display = 'block' 
+            wishMessage.textContent = '祝陈同学考上心仪的研究生上，越来越好呀！'; // 设置祝福语内容  
+            // 如果需要，也可以在这里添加一些样式修改，比如改变颜色或字体大小  
+            // 但由于这些已经在CSS中定义了，所以这里不需要再重复设置  
+        });  
+    </script>  
+</body>  
+</html>
