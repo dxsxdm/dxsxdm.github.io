@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Exam Scores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .university-btn, .year-btn {
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #yearSelection, #imageDisplay {
+            display: none;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Select a Medical University</h1>
+
+<button class="university-btn" onclick="showYears(1)">1号医科大学</button>
+<button class="university-btn" onclick="showYears(2)">2号医科大学</button>
+<button class="university-btn" onclick="showYears(3)">3号医科大学</button>
+<button class="university-btn" onclick="showYears(4)">4号医科大学</button>
+<button class="university-btn" onclick="showYears(5)">5号医科大学</button>
+
+<div id="yearSelection">
+    <h2>Select a Year</h2>
+    <button class="year-btn" onclick="showImage('2022')">2022</button>
+    <button class="year-btn" onclick="showImage('2023')">2023</button>
+    <button class="year-btn" onclick="showImage('2024')">2024</button>
+</div>
+
+<div id="imageDisplay">
+    <h2>Exam Score Image</h2>
+    <img id="scoreImage" src="" alt="Exam Score">
+</div>
+
+<script>
+    function showYears(university) {
+        document.getElementById('yearSelection').style.display = 'block';
+        document.getElementById('imageDisplay').style.display = 'none';
+    }
+
+    function showImage(year) {
+        var imagePath = ''; // Add your image path logic here based on university and year
+        switch (year) {
+            case '2022':
+                imagePath = '/path/to/2022_image.png';
+                break;
+            case '2023':
+                imagePath = '/path/to/2023_image.png';
+                break;
+            case '2024':
+                imagePath = '/path/to/2024_image.png';
+                break;
+            default:
+                imagePath = '';
+        }
+        document.getElementById('scoreImage').src = imagePath;
+        document.getElementById('imageDisplay').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
